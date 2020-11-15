@@ -21,11 +21,11 @@ For handling requests from OcelotReq
 3. Put OcelotLib inside
 
 4. Install these modules
-- express (for http obviously)
-- uuid (creates a image with uuid name for each request)
-- jimp (creating images)
+    - express (for http obviously)
+    - uuid (creates a image with uuid name for each request)
+    - jimp (creating images)
 
-Create index.js file
+5. Create index.js file
 ```js
 // Get OcelotLib and initialize it
 const OcelotLib = require("./OcelotLib");
