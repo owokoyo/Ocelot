@@ -6,3 +6,4 @@ Http Request Router to handle requests from OcelotReq
 - body-parser (for express)
 - fs (helps with deleting files)
 - uuid (creates a image with uuid name for each request)
+- jimp (creating images)
