@@ -34,7 +34,7 @@ module.exports = {
       if (!query.queryNotEncoded) {
         query = decodeQuery(query)
       }
-      callback(query, function(response){
+      var reply = function(response){
         response.status = response.status || (response.error?"error":"ok"); //automatically set response.status
         if (textResponse){
           //send the response as text if ?textResponse=true
@@ -50,7 +50,12 @@ module.exports = {
             })
           })
         }
-      })
+      }
+      try {
+        callback(query, reply)
+      } catch (error) {
+        reply({status:"error",error:error})
+      }
     });
   }
 }
