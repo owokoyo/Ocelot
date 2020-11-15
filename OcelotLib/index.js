@@ -44,7 +44,8 @@ module.exports = {
           let resultPath = path.join(__dirname, generateUUID()+".png"); //generate a uuid for the image
           //encode will convert our json object response into a string into a image
           encode(JSON.stringify(response), resultPath, image=>{
-            res.sendFile(resultPath, ()=>{  //send image to client
+            //send file to user
+            res.sendFile(resultPath, {}, function(){
               fs.unlink(resultPath,a=>{}) //delete image
             })
           })
