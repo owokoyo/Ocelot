@@ -8,8 +8,8 @@ const encode = require("./encode.js");
 const PORT = process.env.PORT || 5000;
 const bp = require('body-parser');
 const fs = require('fs')
-import { v4 as generateUUID } from 'uuid';
-
+const generateUUID = require('uuid').v4;
+const path = require('path')
 expressInstance.use(bp.json()); // for parsing application/json
 
 function decodeQuery(query){
@@ -27,10 +27,10 @@ module.exports = {
   init: function(){
     expressInstance.listen(PORT, () => console.log(`OcelotLib listening on ${ PORT }`));
   },
-  registerMethod: function(path, callback){
-    expressInstance.get(path, function(req, res){
+  registerMethod: function(urlpath, callback){
+    expressInstance.get(urlpath, function(req, res){
       let query = req.query;
-      var textResponse = !!req.textResponse;
+      var textResponse = !!query.textResponse;
       if (!query.queryNotEncoded) {
         query = decodeQuery(query)
       }
@@ -41,11 +41,12 @@ module.exports = {
           res.send(response);
         } else {
           //send the response as json encoded into image if there wasnt a textResponse parameter
-          let resultPath = generateUUID()+".png"; //generate a uuid for the image
+          let resultPath = path.join(__dirname, generateUUID()+".png"); //generate a uuid for the image
           //encode will convert our json object response into a string into a image
           encode(response, resultPath, image=>{
-            res.sendFile(resultPath) //send image to client
-            fs.unlink(resultPath) //delete image
+            res.sendFile(resultPath, ()=>{  //send image to client
+              fs.unlink(resultPath,a=>{}) //delete image
+            })
           })
         }
       })
