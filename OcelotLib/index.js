@@ -43,7 +43,7 @@ module.exports = {
           //send the response as json encoded into image if there wasnt a textResponse parameter
           let resultPath = path.join(__dirname, generateUUID()+".png"); //generate a uuid for the image
           //encode will convert our json object response into a string into a image
-          encode(response, resultPath, image=>{
+          encode(JSON.stringify(response), resultPath, image=>{
             res.sendFile(resultPath, ()=>{  //send image to client
               fs.unlink(resultPath,a=>{}) //delete image
             })
