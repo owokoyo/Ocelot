@@ -40,6 +40,8 @@ OcelotLib.registerMethod("/submitVote", function(){
 ```
 
 5. Push that app to heroku
-`git add .`
-`git commit -m commit`
-`git push heroku master`
+```
+git add .
+git commit -m commit
+git push heroku master
+```
