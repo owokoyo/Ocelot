@@ -1,12 +1,26 @@
 # OcelotLib
 For handling requests from OcelotReq
 
+
+
 ## Using OcelotLib
 
-1. Create a new folder
-2. Put OcelotLib inside
+### Prerequisites:
+- node
+- heroku (or whatever thing ur hosting this on)
+- git
 
-### Install these modules
+### Instructions
+1. Create a new folder
+2. run
+```
+  git init
+  npm init
+  heroku create whateverAppName
+```
+3. Put OcelotLib inside
+
+4. Install these modules
 - express (for http obviously)
 - uuid (creates a image with uuid name for each request)
 - jimp (creating images)
@@ -24,3 +38,8 @@ OcelotLib.registerMethod("/submitVote", function(){
   return {votes:votes};
 });
 ```
+
+5. Push that app to heroku
+`git add .`
+`git commit -m commit`
+`git push heroku master`
