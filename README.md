@@ -25,7 +25,7 @@ For handling requests from OcelotReq
     - uuid (creates a image with uuid name for each request)
     - jimp (creating images)
 
-5. Create index.js file
+6. Create index.js file
 ```js
 // Get OcelotLib and initialize it
 const OcelotLib = require("./OcelotLib");
