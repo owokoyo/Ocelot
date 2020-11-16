@@ -52,7 +52,8 @@ module.exports = {
         }
       }
       try {
-        callback(query, reply)
+        query.__uniqueId = `${query.gameId}/${query.userId}/${query.sessionId}`;
+        callback(query, reply, req, res)
       } catch (error) {
         reply({status:"error",error:error})
       }
