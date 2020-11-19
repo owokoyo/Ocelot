@@ -5,6 +5,7 @@
 const express = require('express');
 let expressInstance = express();
 const encode = require("./encode.js");
+const uniqueId = require("./uniqueId.js")
 const PORT = process.env.PORT || 5000;
 const bp = require('body-parser');
 const fs = require('fs')
@@ -52,7 +53,7 @@ module.exports = {
         }
       }
       try {
-        query.__uniqueId = `${query.gameId}/${query.userId}/${query.sessionId}`;
+        query.__uniqueId = uniqueId(query)
         callback(query, reply, req, res)
       } catch (error) {
         console.log("an error occured: ", error)
