@@ -33,9 +33,9 @@ OcelotLib.init();
 // Declare votes variable, set to 0
 var votes = 0;
 // When PNGRequest fires submitVote, increment votes by 1, and send back changed votes,
-OcelotLib.registerMethod("/submitVote", function(){
+OcelotLib.registerMethod("/submitVote", function(reply){
   votes++;
-  return {votes:votes};
+  reply({votes:votes});
 });
 ```
 
